@@ -10,7 +10,7 @@ OPT = -g2
 
 CFLAGS = -c -DLEVELDB_PLATFORM_POSIX -I. -std=c++0x $(OPT)
 
-LDFLAGS=-lpthread
+LDFLAGS=-pthread
 
 LIBOBJECTS = \
 	./db/builder.o \
