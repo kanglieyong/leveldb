@@ -8,7 +8,7 @@ CC = g++
 #OPT = -O2 -DNDEBUG
 OPT = -g2
 
-CFLAGS = -c -DLEVELDB_PLATFORM_POSIX -I. -std=c++0x $(OPT)
+CFLAGS = -c -DLEVELDB_PLATFORM_POSIX -I. -std=c++11 $(OPT)
 
 LDFLAGS=-pthread
 
@@ -67,7 +67,8 @@ TESTS = \
 	skiplist_test \
 	table_test \
 	version_edit_test \
-	write_batch_test
+	write_batch_test \
+	myapp
 
 PROGRAMS = db_bench $(TESTS)
 
@@ -81,6 +82,9 @@ clean:
 
 db_bench: db/db_bench.o $(LIBOBJECTS) $(TESTUTIL)
 	$(CC) $(LDFLAGS) db/db_bench.o $(LIBOBJECTS) $(TESTUTIL) -o $@
+
+myapp: app/main.o $(LIBOBJECTS)
+	$(CC) $(LDFLAGS) app/main.o $(LIBOBJECTS) -o $@
 
 arena_test: util/arena_test.o $(LIBOBJECTS) $(TESTHARNESS)
 	$(CC) $(LDFLAGS) util/arena_test.o $(LIBOBJECTS) $(TESTHARNESS) -o $@
