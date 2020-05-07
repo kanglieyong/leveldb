@@ -1,0 +1,19 @@
+first time to write key-value: "foo"-"bar"
+what we can see in `/tmp/testdb/*.log` file
+
+00000000~00000003: af bf eb 5e             : crc32       : 4 bytes
+00000004~00000005: 15 00                   : size: 21    : 2 bytes
+00000006         : 01                      : FULL: 1     : 1 byte
+00000007~0000000E: 01 00 00 00 00 00 00 00 : sequences: 1: 8 bytes
+0000000F~00000012: 01 00 00 00             : counts: 1   : 4 bytes
+00000013         : 01                      : insertion: 1: 1 byte
+00000014         : 03                      : key-size:3  : 1 byte
+00000015~00000018: 66 6f 6f                : key: foo    : 3 bytes
+00000019         : 03                      : val-size:3  : 1 byte
+0000001A~0000001C: 62 61 72                : val: bar    : 3 bytes
+
+`
+00000000  af bf eb 5e 15 00 01 01  00 00 00 00 00 00 00 01  |...^............|
+00000010  00 00 00 01 03 66 6f 6f  03 62 61 72              |.....foo.bar|
+0000001c
+`

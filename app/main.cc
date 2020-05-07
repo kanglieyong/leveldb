@@ -24,6 +24,17 @@ int main()
 
   delete db;
 
+  int cmd;
+  std::cin >> cmd;
+  getchar();
+  if (cmd == 1) {
+
+  status = leveldb::DestroyDB("/tmp/testdb", leveldb::Options());
+  if (!status.ok()) {
+    std::cerr << status.ToString() << std::endl;
+  }
+  }
+
   return 0;
   std::string value;
   status = db->Get(leveldb::ReadOptions(), "foo", &value);
